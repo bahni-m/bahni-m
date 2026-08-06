@@ -1,13 +1,13 @@
 <h1>Hi, I'm Bahni 👋</h1>
 
-Founder of [PeakSpec](https://peakspec.xyz) — I teach product teams to run their
+Founder of [peakspec.xyz](https://peakspec.xyz) — I teach product teams to run their
 work through orchestrated AI agents, not one-off prompts. I also build the
 tooling in the open: multi-agent systems for PM work, and prompt kits that
 turn specs into working prototypes.
 
 **What I work on**
 
-- **PeakSpec** — live cohort program teaching PM teams to ship real subagents
+- **[peakspec.xyz](https://peakspec.xyz)** — live cohort program teaching PM teams to ship real subagents
   on their own stack in under 2 weeks
 - **[minions](https://github.com/bahni-m/minions)** — an open-source multi-agent
   PM-ops team (associate PM, GTM, QA, data-analyst subagents and more) that
@@ -15,7 +15,7 @@ turn specs into working prototypes.
 - **[prd-prompt-collection](https://github.com/bahni-m/prd-prompt-collection)** —
   curated PRD prompts that turn a spec into a fully working, mock-data-driven
   frontend prototype with one AI coding assistant run
-- **AI Builders Indonesia** — 1,700+ member community helping Indonesian
+- **[aibuilders.id](https://aibuilders.id)** — 1,700+ member community helping Indonesian
   builders ship and monetize AI products
 
 <h2>About Me</h2>
