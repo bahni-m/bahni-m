@@ -1,12 +1,12 @@
 """Animated hero: the doodles draw themselves in. Needs _hero.html from build.py.
-Run: python3 gif.py  ->  out/hero-<light|dark>.gif
+Run: python3 gif.py  ->  out/hero-<light|dark>.gif (plays once, rests on the finished drawing)
 """
 import pathlib, subprocess, tempfile
 from playwright.sync_api import sync_playwright
 
 HERE = pathlib.Path(__file__).parent
 OUT = HERE / "out"
-FPS, LENGTH, SCALE = 20, 8.5, 1.5
+FPS, LENGTH, SCALE = 20, 5.6, 1.5
 
 # svg.ink children in the order hero doodles add them -> [start, end] seconds
 SCHEDULE = [(0.3, 0.9),                          # marker circle "agents"
@@ -50,7 +50,7 @@ with sync_playwright() as p, tempfile.TemporaryDirectory() as tmp:
             pg.locator("#frame").screenshot(path=str(frames / f"{i:04d}.png"))
         pg.close()
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", str(frames / "%04d.png"),
-                        "-filter_complex", "[0]split[a][b];[a]palettegen=stats_mode=full:max_colors=128[p];[b][p]paletteuse=dither=none:diff_mode=rectangle",
+                        "-loop", "-1", "-filter_complex", "[0]split[a][b];[a]palettegen=stats_mode=full:max_colors=128[p];[b][p]paletteuse=dither=none:diff_mode=rectangle",
                         str(OUT / f"hero-{theme}.gif")], check=True)
     b.close()
 for f in sorted(OUT.glob("hero-*.gif")): print(f.name, f.stat().st_size // 1024, "KB")
