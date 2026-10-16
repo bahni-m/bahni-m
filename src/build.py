@@ -1,7 +1,7 @@
 """Field Notes: render the bahni-m README images (light + dark) with Playwright.
 
 Each image is an HTML page sharing one token set. Doodles are drawn with rough.js after fonts load.
-Run: python3 build.py  ->  out/<name>-<light|dark>.png
+Run: python3 build.py  ->  out/<name>-<light|dark>.png  (then python3 gif.py for the animated hero)
 """
 import base64, pathlib, re
 from playwright.sync_api import sync_playwright

@@ -1,5 +1,5 @@
 <p align="center">
-  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.png"><img src="assets/hero-light.png" alt="I build agents that write, design and ship content. Building aibuilders.id. Ex-AI PM, 7 years shipping AI to 5M+ users. Pipeline: radar, draft, you approve, posted." width="100%"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.gif"><img src="assets/hero-light.gif" alt="I build agents that write, design and ship content. Building aibuilders.id. Ex-AI PM, 7 years shipping AI to 5M+ users. Pipeline: radar, draft, you approve, posted." width="100%"></picture>
 </p>
 
 ### / what I'm building
