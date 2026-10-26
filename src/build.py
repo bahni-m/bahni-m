@@ -123,6 +123,7 @@ h1 span{white-space:nowrap}
 """)
 
 # ---------------- brand cards ----------------
+# The logo kits live next to the repo (SP), not in it, so the cards are built on demand.
 CARD_STYLE = """
 .card{position:absolute;inset:22px}
 .card .body{position:absolute;inset:24px 0 0 0;padding:30px 30px 0}
@@ -141,20 +142,21 @@ def card(fig, logo_light, logo_dark, logo_h, tag_html, desc, url, note, doodles)
 </div></div>
 <div class="hand" id="note" style="{note[1]}">{note[0]}</div>""", doodles=doodles)
 
-CARD_AB = card(2, AB / "aibuilders-logo-horizontal.png", AB / "aibuilders-logo-horizontal-dark-bg.png", 56,
+def cards():
+    return {"card-aibuilders": card(2, AB / "aibuilders-logo-horizontal.png", AB / "aibuilders-logo-horizontal-dark-bg.png", 56,
     'Learn · Build · <span id="hl">Get built</span>',
     "Where 1,700+ Indonesian builders learn to ship and sell AI products. Events, courses and the platform, on Nuxt + Cloudflare.",
     "aibuilders.id", ("where I build in public", "right:44px;top:70px"), """
   squiggle(box('hl'),v('--marker'),31,0);
   const n=box('note'); arrow([[n.x+n.w*0.35,n.y+n.h+4],[n.x+n.w*0.2,n.y+n.h+40],[n.x-34,n.y+n.h+48]],v('--ballpoint'),33);
-""")
-CARD_KS = card(3, KS / "konten-studio-lockup-trim.png", KS / "konten-studio-lockup-dark-trim.png", 36,
+"""),
+  "card-kontenstudio": card(3, KS / "konten-studio-lockup-trim.png", KS / "konten-studio-lockup-dark-trim.png", 36,
     'Growth on <span id="hl">Threads</span>',
     "Done-for-you, monthly. Strategy, posts and replies that turn followers into signups for SaaS and tech brands.",
     "kontenstudio.agency", ("on purpose.", "left:372px;top:138px"), """
   const t=box('hl'); add(rc.ellipse(t.x+t.w/2,t.y+t.h/2+3,t.w+26,t.h+8,{stroke:v('--marker'),strokeWidth:3,roughness:1.5,bowing:1.3,seed:41}));
   const n=box('note'); arrow([[n.x+20,n.y+n.h+2],[n.x+4,n.y+n.h+26],[t.x+t.w+20,t.y+t.h/2+4]],v('--ballpoint'),43);
-""")
+""")}
 
 # ---------------- stack ----------------
 STACK = [("claude", "Claude Code"), ("cloudflare", "Workers · D1"), ("nuxt", "Nuxt"), ("vuedotjs", "Vue"),
@@ -195,19 +197,22 @@ STATSIMG = dict(w=1200, h=290, style="""
   const n=box('note'); arrow([[n.x-6,n.y+n.h/2],[s.x+s.w/2-10,n.y+n.h/2+4],[s.x+s.w/2-4,s.y+s.h+40]],v('--ballpoint'),63);
 """)
 
-JOBS = {"hero": HERO, "card-aibuilders": CARD_AB, "card-kontenstudio": CARD_KS, "stack": STACKIMG, "stats": STATSIMG}
+def render(jobs, out=OUT):
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        for name, j in jobs.items():
+            html = (HEAD.replace("WIDTH", str(j["w"])).replace("HEIGHT", str(j["h"]))
+                    .replace("STYLE", j["style"]).replace("DOODLES", j["doodles"]).replace("BODY", j["body"]))
+            f = HERE / f"_{name}.html"; f.write_text(html)
+            for theme in ("light", "dark"):
+                pg = b.new_page(viewport={"width": j["w"], "height": j["h"]}, device_scale_factor=2)
+                pg.goto(f"file://{f.resolve()}?theme={theme}", wait_until="networkidle")
+                pg.wait_for_selector("body[data-ready]"); pg.wait_for_timeout(250)
+                pg.locator("#frame").screenshot(path=str(out / f"{name}-{theme}.png"))
+                pg.close()
+            f.unlink()
+        b.close()
 
-with sync_playwright() as p:
-    b = p.chromium.launch()
-    for name, j in JOBS.items():
-        html = (HEAD.replace("WIDTH", str(j["w"])).replace("HEIGHT", str(j["h"]))
-                .replace("STYLE", j["style"]).replace("DOODLES", j["doodles"]).replace("BODY", j["body"]))
-        f = HERE / f"_{name}.html"; f.write_text(html)
-        for theme in ("light", "dark"):
-            pg = b.new_page(viewport={"width": j["w"], "height": j["h"]}, device_scale_factor=2)
-            pg.goto(f"file://{f.resolve()}?theme={theme}", wait_until="networkidle")
-            pg.wait_for_selector("body[data-ready]"); pg.wait_for_timeout(250)
-            pg.locator("#frame").screenshot(path=str(OUT / f"{name}-{theme}.png"))
-            pg.close()
-    b.close()
-print("ok", sorted(x.name for x in OUT.iterdir()))
+if __name__ == "__main__":
+    render({"hero": HERO, **cards(), "stack": STACKIMG, "stats": STATSIMG})
+    print("ok", sorted(x.name for x in OUT.iterdir()))

@@ -13,6 +13,14 @@ then post to Threads, IG and WhatsApp on schedule.
   <a href="https://kontenstudio.agency"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-kontenstudio-dark.png"><img src="assets/card-kontenstudio-light.png" alt="Konten Studio: growth on Threads for SaaS and tech brands" width="49%"></picture></a>
 </p>
 
+### / results on threads
+
+The brands my pipelines run, straight from Threads Insights. Refreshed every 2 days, same numbers as [kontenstudio.agency](https://kontenstudio.agency).
+
+<p align="center">
+  <a href="https://kontenstudio.agency"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/results-dark.png"><img src="assets/results-light.png" alt="Threads results: see src/results.json for the latest numbers" width="100%"></picture></a>
+</p>
+
 ### / open tools for agent users
 
 | Repo | What it does |

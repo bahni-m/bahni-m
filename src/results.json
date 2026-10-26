@@ -1,0 +1,33 @@
+{
+  "asOf": "2026-10-25",
+  "windowDays": 30,
+  "headline": {
+    "handle": "grupy.chat",
+    "views": 10891809,
+    "posts": 486,
+    "days": 16,
+    "firstPost": "2026-10-10"
+  },
+  "brands": [
+    {
+      "name": "grupy.chat",
+      "handle": "grupy.chat",
+      "blurb": "WhatsApp group summaries app",
+      "views": 10891812,
+      "engagement": 228866,
+      "followers": 1187,
+      "clicks": 55,
+      "posts": 486
+    },
+    {
+      "name": "aibuilders.id",
+      "handle": "aibuilders.id",
+      "blurb": "Indonesian builder community",
+      "views": 582105,
+      "engagement": 8231,
+      "followers": 1002,
+      "clicks": 5607,
+      "posts": 723
+    }
+  ]
+}
