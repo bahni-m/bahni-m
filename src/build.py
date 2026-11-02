@@ -105,7 +105,7 @@ h1 span{white-space:nowrap}
 """, body=f"""
 <div class="bar lbl"><span>/ <b>bahni-m</b> &nbsp;·&nbsp; field notes</span><span>Bogor, ID &nbsp;·&nbsp; UTC+7</span></div>
 <h1>I build <span id="w-agents">agents</span> that write, design &amp; <span id="w-ship">ship content</span>.</h1>
-<p class="sub">Building <b>aibuilders.id</b>. Ex-AI PM, 7 years shipping AI to 5M+ users.</p>
+<p class="sub">Building <b>aibuilders.id</b>. Ex-AI PM in mobility, travel &amp; govtech.</p>
 <div class="win fig1" id="win"><div class="chrome">[ FIG. 1 ]</div><div class="body dotgrid"></div>{AVATAR}</div>
 <div class="hand" id="n-me" style="left:430px;top:390px">that's me, the human gate</div>
 <div class="flow">
@@ -179,7 +179,7 @@ STACKIMG = dict(w=1200, h=270, style="""
 """)
 
 # ---------------- stats ----------------
-STATS = [("~7y", "shipping AI products", "st1"), ("5M+", "users reached", "st2"), ("1M+", "assets classified", "st3"),
+STATS = [("2019", "first AI product shipped", "st1"), ("15+", "MVPs in 12 months", "st2"), ("1M+", "assets classified", "st3"),
          ("-90%", "account hijacking", "st4"), ("$150K", "saved per year", "st5")]
 stat_cells = "".join(f'<div class="st"><b id="{i}">{n}</b><span>{l}</span></div>' for n, l, i in STATS)
 STATSIMG = dict(w=1200, h=290, style="""

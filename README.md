@@ -1,5 +1,5 @@
 <p align="center">
-  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.gif"><img src="assets/hero-light.gif" alt="I build agents that write, design and ship content. Building aibuilders.id. Ex-AI PM, 7 years shipping AI to 5M+ users. Pipeline: radar, draft, you approve, posted." width="100%"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.gif"><img src="assets/hero-light.gif" alt="I build agents that write, design and ship content. Building aibuilders.id. Ex-AI product manager in mobility, travel and govtech. Pipeline: radar, draft, you approve, posted." width="100%"></picture>
 </p>
 
 ### / what I'm building
@@ -39,10 +39,10 @@ The brands my pipelines run, straight from Threads Insights. Refreshed every 2 d
 
 ### / before this
 
-~7 years as an AI product leader across Enterprise, MarTech, GovTech, Travel and Mobility.
+Before agents, I led AI products across mobility, travel, govtech, enterprise and martech.
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.png"><img src="assets/stats-light.png" alt="About 7 years shipping AI, 5M+ users reached, 1M+ assets classified, 90% less account hijacking, $150K saved per year" width="100%"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.png"><img src="assets/stats-light.png" alt="15+ MVPs in 12 months, 1M+ assets classified, 90% less account hijacking, $150K saved per year, AI products since 2019" width="100%"></picture>
 </p>
 
 <p align="center">
