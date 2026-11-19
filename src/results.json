@@ -1,10 +1,10 @@
 {
-  "asOf": "2026-11-16",
+  "asOf": "2026-11-18",
   "windowDays": 30,
   "headline": {
     "handle": "grupy.chat",
-    "views": 9944486,
-    "posts": 759,
+    "views": 8755455,
+    "posts": 758,
     "days": 30,
     "firstPost": null
   },
@@ -13,21 +13,21 @@
       "name": "grupy.chat",
       "handle": "grupy.chat",
       "blurb": "WhatsApp group summaries app",
-      "views": 9944486,
-      "engagement": 178354,
-      "followers": 1445,
+      "views": 8755455,
+      "engagement": 115928,
+      "followers": 1441,
       "clicks": 69,
-      "posts": 759
+      "posts": 758
     },
     {
       "name": "aibuilders.id",
       "handle": "aibuilders.id",
       "blurb": "Indonesian builder community",
-      "views": 406628,
-      "engagement": 4630,
-      "followers": 1115,
-      "clicks": 2925,
-      "posts": 839
+      "views": 380873,
+      "engagement": 3766,
+      "followers": 1116,
+      "clicks": 2673,
+      "posts": 791
     }
   ]
 }
