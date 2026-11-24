@@ -82,7 +82,7 @@ document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode()
 AVATAR = (HERE / "avatar.svg").read_text().replace("<svg ", '<svg class="avatar" ', 1)
 AB = SP / "ai-builders-id_logo/01-primary"
 PK = SP.parent.parent / "peakspec/prototype-peakspec-app/v3/design/brand-kit/logo"  # peakspec v3 brand kit (mark only)
-KS = SP / "konten-studio_logo/01-primary"
+KS = SP.parent.parent / "konten-studio/logo/01-primary"  # repo konten-studio/logo
 
 # ---------------- hero ----------------
 HERO = dict(w=1200, h=580, style="""
@@ -152,11 +152,11 @@ def cards():
   const n=box('note'); arrow([[n.x+n.w*0.35,n.y+n.h+4],[n.x+n.w*0.2,n.y+n.h+40],[n.x-34,n.y+n.h+48]],v('--ballpoint'),33);
 """),
   "card-kontenstudio": card(3, KS / "konten-studio-lockup-trim.png", KS / "konten-studio-lockup-dark-trim.png", 36,
-    'Growth on <span id="hl">Threads</span>',
-    "Done-for-you, monthly. Strategy, posts and replies that turn followers into signups for SaaS and tech brands.",
-    "kontenstudio.agency", ("on purpose.", "left:372px;top:138px"), """
+    'The content app I <span id="hl">build in public</span>',
+    "The app behind my content pipelines: research, drafts, one human approval, then posting.",
+    "kontenstudio.agency", ("my own product", "right:44px;top:70px"), """
   const t=box('hl'); add(rc.ellipse(t.x+t.w/2,t.y+t.h/2+3,t.w+26,t.h+8,{stroke:v('--marker'),strokeWidth:3,roughness:1.5,bowing:1.3,seed:41}));
-  const n=box('note'); arrow([[n.x+20,n.y+n.h+2],[n.x+4,n.y+n.h+26],[t.x+t.w+20,t.y+t.h/2+4]],v('--ballpoint'),43);
+  const n=box('note'); arrow([[n.x+n.w*0.35,n.y+n.h+4],[n.x+n.w*0.2,n.y+n.h+40],[n.x-34,n.y+n.h+48]],v('--ballpoint'),43);
 """)}
 
 def card_peakspec():
