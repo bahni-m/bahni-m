@@ -81,6 +81,7 @@ document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode()
 
 AVATAR = (HERE / "avatar.svg").read_text().replace("<svg ", '<svg class="avatar" ', 1)
 AB = SP / "ai-builders-id_logo/01-primary"
+PK = SP.parent.parent / "peakspec/prototype-peakspec-app/v3/design/brand-kit/logo"  # peakspec v3 brand kit (mark only)
 KS = SP / "konten-studio_logo/01-primary"
 
 # ---------------- hero ----------------
@@ -105,7 +106,7 @@ h1 span{white-space:nowrap}
 """, body=f"""
 <div class="bar lbl"><span>/ <b>bahni-m</b> &nbsp;·&nbsp; field notes</span><span>Bogor, ID &nbsp;·&nbsp; UTC+7</span></div>
 <h1>I build <span id="w-agents">agents</span> that write, design &amp; <span id="w-ship">ship content</span>.</h1>
-<p class="sub">Building <b>aibuilders.id</b>. Ex-AI PM in mobility, travel &amp; govtech.</p>
+<p class="sub">I set up teams of AI bots for business owners. Building <b>peakspec</b> + <b>aibuilders.id</b>.</p>
 <div class="win fig1" id="win"><div class="chrome">[ FIG. 1 ]</div><div class="body dotgrid"></div>{AVATAR}</div>
 <div class="hand" id="n-me" style="left:430px;top:390px">that's me, the human gate</div>
 <div class="flow">
@@ -158,6 +159,15 @@ def cards():
   const n=box('note'); arrow([[n.x+20,n.y+n.h+2],[n.x+4,n.y+n.h+26],[t.x+t.w+20,t.y+t.h/2+4]],v('--ballpoint'),43);
 """)}
 
+def card_peakspec():
+    return card(6, PK / "mark-ink.svg", PK / "mark-white.svg", 52,
+    'Your own team of <span id="hl">AI bots</span>',
+    "Set up for you, on the AI plans you already pay for. Each bot gets one job, and you approve the steps that matter.",
+    "peakspec.xyz", ("set up for you", "right:44px;top:70px"), """
+  squiggle(box('hl'),v('--marker'),71,0);
+  const n=box('note'); arrow([[n.x+n.w*0.35,n.y+n.h+4],[n.x+n.w*0.2,n.y+n.h+40],[n.x-34,n.y+n.h+48]],v('--ballpoint'),73);
+""")
+
 # ---------------- stack ----------------
 STACK = [("claude", "Claude Code"), ("cloudflare", "Workers · D1"), ("nuxt", "Nuxt"), ("vuedotjs", "Vue"),
          ("typescript", "TypeScript"), ("python", "Python"), ("playwright", "Playwright"), ("git", "git + cron")]
@@ -179,12 +189,12 @@ STACKIMG = dict(w=1200, h=270, style="""
 """)
 
 # ---------------- stats ----------------
-STATS = [("2019", "first AI product shipped", "st1"), ("15+", "MVPs in 12 months", "st2"), ("1M+", "assets classified", "st3"),
-         ("-90%", "account hijacking", "st4"), ("$150K", "saved per year", "st5")]
+STATS = [("2019", "first AI product shipped", "st1"), ("15+", "MVPs in 12 months", "st2"), ("1M+", "contents tagged", "st3"),
+         ("-90%", "account hijacking", "st4")]
 stat_cells = "".join(f'<div class="st"><b id="{i}">{n}</b><span>{l}</span></div>' for n, l, i in STATS)
 STATSIMG = dict(w=1200, h=290, style="""
 .bar{position:absolute;left:40px;right:40px;top:26px;display:flex;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--rule-strong)}
-.row{position:absolute;left:40px;right:40px;top:78px;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--rule-strong);background:var(--win)}
+.row{position:absolute;left:40px;right:40px;top:78px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule-strong);background:var(--win)}
 .st{height:140px;padding:28px 24px;border-right:1px dashed var(--rule-strong)}
 .st:last-child{border-right:none}
 .st b{display:inline-block;font:900 52px/1 var(--f-dot);letter-spacing:.01em}
@@ -192,7 +202,7 @@ STATSIMG = dict(w=1200, h=290, style="""
 """, body=f"""
 <div class="bar lbl"><span>/ <b>before this</b> &nbsp;·&nbsp; [ fig. 5 ]</span><span>Enterprise · MarTech · GovTech · Travel · Mobility</span></div>
 <div class="row">{stat_cells}</div>
-<div class="hand" id="note" style="left:330px;top:238px">AI PM, before agents were cool</div>""", doodles="""
+<div class="hand" id="note" style="left:560px;top:238px">AI PM, before agents were cool</div>""", doodles="""
   const s=box('st2'); add(rc.ellipse(s.x+s.w/2,s.y+s.h/2+2,s.w+36,s.h+22,{stroke:v('--marker'),strokeWidth:3,roughness:1.5,bowing:1.2,seed:61}));
   const n=box('note'); arrow([[n.x-6,n.y+n.h/2],[s.x+s.w/2-10,n.y+n.h/2+4],[s.x+s.w/2-4,s.y+s.h+40]],v('--ballpoint'),63);
 """)
@@ -214,5 +224,7 @@ def render(jobs, out=OUT):
         b.close()
 
 if __name__ == "__main__":
-    render({"hero": HERO, **cards(), "stack": STACKIMG, "stats": STATSIMG})
+    jobs = {"hero": HERO, "card-peakspec": card_peakspec(), "stack": STACKIMG, "stats": STATSIMG}
+    if AB.exists() and KS.exists(): jobs.update(cards())  # logo kits live outside the repo; skip those cards when absent
+    render(jobs)
     print("ok", sorted(x.name for x in OUT.iterdir()))
