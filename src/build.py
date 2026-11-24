@@ -160,7 +160,7 @@ def cards():
 """)}
 
 def card_peakspec():
-    return card(6, PK / "mark-ink.svg", PK / "mark-white.svg", 52,
+    return card(7, PK / "mark-ink.svg", PK / "mark-white.svg", 52,
     'Your own team of <span id="hl">AI bots</span>',
     "Set up for you, on the AI plans you already pay for. Each bot gets one job, and you approve the steps that matter.",
     "peakspec.xyz", ("set up for you", "right:44px;top:70px"), """
